@@ -50,17 +50,15 @@ public class Table {
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
-        return new Font(baseFont, 8, Font.NORMAL);
+        return new Font(baseFont, 7, Font.NORMAL);
     }
 
     private void fillRows(Font font, java.util.List<TableRow> rows) {
-        rows.forEach(tableRow -> {
-                    tableRow.getRowStings().forEach(columnTitle -> {
-                        PdfPCell cell = new PdfPCell();
-                        cell.setPhrase(new Phrase(columnTitle, font));
-                        table.addCell(cell);
-                    });
-                }
+        rows.forEach(tableRow -> tableRow.getRowStings().forEach(columnTitle -> {
+            PdfPCell cell = new PdfPCell();
+            cell.setPhrase(new Phrase(columnTitle, font));
+            table.addCell(cell);
+        })
         );
     }
 
